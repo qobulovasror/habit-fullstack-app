@@ -1,10 +1,13 @@
 import { Router } from "express";
 import { addUser, deleteUser, getAllUsers, getUserbyId, updatePassword, updateUser } from "../controllers/user.controller";
+import { auth } from "../middlewares/auth.middleware";
+
 
 
 const userRouter = Router()
 
 //get all users
+// userRouter.get("/", [auth], getAllUsers)
 userRouter.get("/", getAllUsers)
 
 //get one user by id
