@@ -7,8 +7,8 @@ import { auth } from "../middlewares/auth.middleware";
 const userRouter = Router()
 
 //get all users
-// userRouter.get("/", [auth], getAllUsers)
-userRouter.get("/", getAllUsers)
+userRouter.get("/", [auth], getAllUsers)
+// userRouter.get("/", getAllUsers)
 
 //get one user by id
 userRouter.get("/:id", getUserbyId)

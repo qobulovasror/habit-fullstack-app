@@ -7,24 +7,32 @@ interface CustomRequest extends Request {
     user: { id: number, email: string, name: string }
 }
 
-function auth(req: CustomRequest, res: Response, next: NextFunction) {
+function auth(req: Request, res: Response, next: NextFunction) {
     const token = req.header('x-auth-token');
-    if (!secretKey)
-        throw new Error('jwt security key not found');
+    if (!secretKey) {
+        console.log("JWT security key not found");
+        process.exit(1);
+    }
 
     if (!token)
         return res.status(401).json({ message: 'Unauthorized - No token provided' });
 
-    const decoded = jwt.verify(token, secretKey);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { id, name, email } = decoded as any;
-    if (id && name && email) {
-        req.user = { id, email, name };
-        next();
-    } else {
-        return res.status(401).send({ message: "Invalid Token" });
+    try {
+        const decoded = jwt.verify(token, secretKey) as { id: number, name: string, email: string };
+        if (decoded.id && decoded.name && decoded.email) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            req.user = { id: decoded.id, email: decoded.email, name: decoded.name };
+            next();
+        } else {
+            return res.status(401).send({ message: 'Invalid Token' });
+        }
+    } catch (error) {
+        return res.status(401).send({ message: 'Invalid Token' });
     }
 }
+
+
 
 function checkAdmin(req: CustomRequest, res: Response, next: NextFunction) {
     try {

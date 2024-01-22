@@ -4,6 +4,7 @@ import { UserEntity } from '../database/entity/User.entity';
 import { addUserValidator, updatePasswordValidator, updateUserValidator } from '../validations/user.validator';
 import { CustomError } from '../middlewares/customError';
 import bcrypt from 'bcrypt'
+import { generateToken } from '../helper/generateToken';
 
 async function getAllUsers(req: Request, res: Response, next: NextFunction) {
   try {
@@ -45,7 +46,8 @@ async function addUser(req: Request, res: Response, next: NextFunction) {
     user.password = hashPassword;
 
     const newUser = await useTypeORM(UserEntity).save(user);
-    res.status(201).send({ id: newUser.id, name: newUser.name, email: newUser.email });
+    const token = await generateToken({id: user.id, name: user.name, email: user.email});
+    res.status(201).header({"x-auth-Token": token}).send({ id: newUser.id, name: newUser.name, email: newUser.email });
   } catch (err) {
     console.log(err);
     next(err)

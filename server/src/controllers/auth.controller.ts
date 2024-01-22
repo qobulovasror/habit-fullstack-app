@@ -18,7 +18,8 @@ async function authHandler(req: Request, res: Response, next: NextFunction){
         const isValid = await bcrypt.compare(req.body.password, user.password);
         if(!isValid)
             throw new CustomError(400, "email or password incorrect");
-        const token = generateToken({id: user.id, name: user.name, email: user.email});
+        const token = await generateToken({id: user.id, name: user.name, email: user.email});
+        
         return res.status(200).header({"x-auth-Token": token}).json({ok: true, message: "success"})
     } catch (err) {
         console.log(err);
