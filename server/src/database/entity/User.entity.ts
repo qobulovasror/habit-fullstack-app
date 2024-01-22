@@ -3,7 +3,6 @@ import IUser from '../model/User.model';
 
 @Entity()
 export class UserEntity implements IUser {
-  
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -17,5 +16,5 @@ export class UserEntity implements IUser {
   password!: string;
   
   @Column({default: new Date().toDateString()})
-  createdAt: string;
+  createdAt!: string;
 }

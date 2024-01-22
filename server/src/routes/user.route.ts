@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addUser, deleteUser, getAllUsers, getUserbyId, updateUser } from "../controllers/user.controller";
+import { addUser, deleteUser, getAllUsers, getUserbyId, updatePassword, updateUser } from "../controllers/user.controller";
 
 
 const userRouter = Router()
@@ -15,6 +15,9 @@ userRouter.post("/", addUser)
 
 //update user by id
 userRouter.put("/:id", updateUser)
+
+//update user passwors by id
+userRouter.patch("/:id", updatePassword)
 
 //delete user by id
 userRouter.delete("/:id", deleteUser)

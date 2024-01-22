@@ -3,7 +3,7 @@ import { DataSource, EntityTarget, ObjectLiteral, Repository } from 'typeorm';
 let typeORMDB: DataSource;
 
 export default async function typeORMConnect(): Promise<void> {
-
+  
   const dataSource = new DataSource({
     type: 'postgres',
     url: process.env.PGSQL_URI,
@@ -11,8 +11,7 @@ export default async function typeORMConnect(): Promise<void> {
       `${__dirname}/entity/*.entity.js`,
       `${__dirname}/entity/*.entity.ts`
     ],
-    synchronize: true,
-    logging: false
+    synchronize: true
   });
 
   typeORMDB = await dataSource.initialize();
