@@ -7,3 +7,5 @@ import securitySetup from './startup/security';
 appSetup(app);
 securitySetup(app, express);
 routerSetup(app);
+
+export default app;

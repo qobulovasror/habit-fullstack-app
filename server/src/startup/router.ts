@@ -12,7 +12,10 @@ const routerSetup = (app: Express) =>
 
   .use("/api/user", userRouter )
   .use("/api/auth", authRoute )
-  // app.use("/api/habit", userRouter )
+  
+  .get("/", (req, res)=>{
+    res.send("Hello World")
+  })
 
   .use(errorMiddleware);
 
