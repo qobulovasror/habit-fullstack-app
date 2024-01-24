@@ -6,7 +6,8 @@ const addUserValidator = async (data: IUser) => {
     return Joi.object({
         name: Joi.string().min(3).required().max(30),
         email: Joi.string().email().required(),
-        password: Joi.string().required().min(6).max(30)
+        password: Joi.string().required().min(6).max(30),
+        role: Joi.string()
     }).validateAsync(data);
 }
 

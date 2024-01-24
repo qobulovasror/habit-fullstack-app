@@ -44,9 +44,10 @@ async function addUser(req: Request, res: Response, next: NextFunction) {
     user.name = req.body.name;
     user.email = req.body.email;
     user.password = hashPassword;
+    user.role = req.body.role || "user";
 
     const newUser = await useTypeORM(UserEntity).save(user);
-    const token = await generateToken({id: user.id, name: user.name, email: user.email});
+    const token = await generateToken({id: user.id, name: user.name, email: user.email, role: user.role});
     res.status(201).header({"x-auth-Token": token}).send({ id: newUser.id, name: newUser.name, email: newUser.email });
   } catch (err) {
     console.log(err);
