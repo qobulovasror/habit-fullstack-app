@@ -32,48 +32,6 @@ function auth(req: Request, res: Response, next: NextFunction) {
     }
 }
 
-
-
-// function checkAdmin(req: Request, res: Response, next: NextFunction) {
-//     try {
-//         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-//         const { isAdmin } = req.user as any;
-//         if (isAdmin)
-//             return next();
-//         return res.status(403).json({
-//             message: 'Forbidden - Admin access required'
-//         });
-//     } catch(error) {
-//         return res.status(401).json({
-//             message: "Unauthorized - Invalid Token"
-//         })
-//     }
-// }
 export {
     auth,
-    // checkAdmin
 };
-
-
-
-// import { Request, Response, NextFunction } from 'express';
-// import jwt, { VerifyErrors } from 'jsonwebtoken';
-
-// const secretKey = 'yourSecretKey'; // Replace with a secure secret key
-
-// export function authenticateJWT(req: Request, res: Response, next: NextFunction) {
-//   const token = req.header('Authorization');
-
-//   if (!token) {
-//     return res.status(401).json({ message: 'Unauthorized - No token provided' });
-//   }
-
-//   jwt.verify(token, secretKey, (err: VerifyErrors | null, user: unknown) => {
-//     if (err) {
-//       return res.status(403).json({ message: 'Forbidden - Invalid token' });
-//     }
-
-//     req.user = user;
-//     next();
-//   });
-// }

@@ -13,6 +13,6 @@ export class TrackEntity implements ITrack {
     @Column({default: 100})
     quatity: number;
 
-    @ManyToOne(() => HabitEntity, (habit) => habit.track)
-    habit: string;
+    @ManyToOne(() => HabitEntity, (habit) => habit.tracks)
+    habit: HabitEntity;
 }

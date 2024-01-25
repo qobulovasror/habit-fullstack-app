@@ -41,9 +41,9 @@ export class HabitEntity implements IHabit {
     @Column({nullable: true})
     reminderTime!: string;
 
-    @ManyToOne(() => UserEntity, (user) => user.habit)
-    user: string;
+    @ManyToOne(() => UserEntity, (user) => user.habits)
+    user: UserEntity;
 
     @OneToMany(() => TrackEntity, (track) => track.habit)
-    track: TrackEntity[];
+    tracks: TrackEntity[];
 }

@@ -37,6 +37,9 @@ async function addUser(req: Request, res: Response, next: NextFunction) {
     if (error)
       throw new CustomError(400, error?.details[0].message);
     
+    const oldEmail = await useTypeORM(UserEntity).find({where: {email: req.body.email}})
+    if(oldEmail)
+      throw new CustomError(400, "This email already exists")
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(req.body.password, salt);
     

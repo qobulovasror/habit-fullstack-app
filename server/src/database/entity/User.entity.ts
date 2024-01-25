@@ -23,5 +23,5 @@ export class UserEntity implements IUser {
   role!: string;
 
   @OneToMany(() => HabitEntity, (habit) => habit.user)
-  habit: HabitEntity[];
+  habits: HabitEntity[];
 }
