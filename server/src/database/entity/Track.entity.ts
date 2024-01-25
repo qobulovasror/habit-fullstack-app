@@ -7,7 +7,7 @@ export class TrackEntity implements ITrack {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({default: new Date().toDateString()})
+    @Column({default: new Date().toISOString()})
     time: string;
 
     @Column({default: 100})
