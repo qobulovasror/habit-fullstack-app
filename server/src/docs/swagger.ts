@@ -1,5 +1,5 @@
-import { authUsers } from './routes/auth.docs';
-import { getUsers, postUsers, putUsers } from './routes/user.doc';
+import { authUsers } from './open-api/auth.docs';
+import { getUsers, postUsers, putUsers } from './open-api/user.doc';
 
 export const swaggerDocument = {
     openapi: "3.0.1",
