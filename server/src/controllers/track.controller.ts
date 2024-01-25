@@ -72,7 +72,7 @@ async function updateTrack(req: Request, res: Response, next: NextFunction) {
         //@ts-expect-error
         const userId = req.user.id; 
         const habitId = req.body.habitId;  
-        const id = req.params.id;       
+        const id = req.params.id;
         if(!userId || !id || !habitId)
             throw new CustomError( 400, 'Missing habit or track ID');
         const habit = await useTypeORM(HabitEntity).find({where: { user: userId, id: habitId },});
