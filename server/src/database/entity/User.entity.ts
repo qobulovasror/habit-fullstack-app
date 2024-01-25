@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { HabitEntity } from './Habit.entity';
 import IUser from '../model/User.model';
 
 @Entity()
@@ -20,4 +21,7 @@ export class UserEntity implements IUser {
 
   @Column({default: "user"})
   role!: string;
+
+  @OneToMany(() => HabitEntity, (habit) => habit.user)
+  habit: HabitEntity[];
 }

@@ -1,13 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import IHabit from '../model/Habit.model';
+import { UserEntity } from './User.entity';
+import { TrackEntity } from './Track.entity';
 
 @Entity()
 export class HabitEntity implements IHabit {
     @PrimaryGeneratedColumn()
     id!: number;
-    
-    @Column()
-    user_id!: number;
     
     @Column()
     name!: string;
@@ -41,4 +40,10 @@ export class HabitEntity implements IHabit {
     
     @Column({nullable: true})
     reminderTime!: string;
+
+    @ManyToOne(() => UserEntity, (user) => user.habit)
+    user: string;
+
+    @OneToMany(() => TrackEntity, (track) => track.habit)
+    track: TrackEntity[];
 }
