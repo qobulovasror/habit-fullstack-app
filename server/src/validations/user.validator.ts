@@ -15,7 +15,6 @@ const addUserValidator = async (data: IUser) => {
 const updateUserValidator = async (data: IUser) => {
     return Joi.object({
         name: Joi.string().min(3).required().max(30),
-        email: Joi.string().email().required()
     }).validateAsync(data);
 }
 

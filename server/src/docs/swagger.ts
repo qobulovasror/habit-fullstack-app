@@ -1,4 +1,5 @@
-import { getUsers } from './src/open-api/get-users';
+import { authUsers } from './routes/auth.docs';
+import { getUsers, postUsers, putUsers } from './routes/user.doc';
 
 export const swaggerDocument = {
     openapi: "3.0.1",
@@ -19,7 +20,10 @@ export const swaggerDocument = {
     },
     tags: [
         {
-            name: "Users",
+            name: "Auth",
+        },
+        {
+            name: "User",
         },
         {
             name: "Habits",
@@ -29,10 +33,23 @@ export const swaggerDocument = {
         },
     ],
     paths: {
+        "/auth": {
+            post: authUsers,
+        },
         "/user": {
             get: getUsers,
-            post: getUsers,
-            put: getUsers,
+            post: postUsers,
+            put: putUsers,
+            // delete: deleteUsers,
+        },
+        "/habit": {
+            // get: getUsers,
+            // post: addUsers,
+            // put: updateUsers,
+            // delete: deleteUsers,
+        },
+        "/track": {
+            // get: getUsers,
             // post: addUsers,
             // put: updateUsers,
             // delete: deleteUsers,
