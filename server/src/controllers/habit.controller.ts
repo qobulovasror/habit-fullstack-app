@@ -7,10 +7,8 @@ import { addHabitValidator, updateHabitValidator } from "../validations/habit.va
 
 //get all habits for admin
 async function getAllHabits(req: Request, res: Response, next: NextFunction) {
-    console.log("all");
     try {
         const habits = await useTypeORM(HabitEntity).find()
-        console.log(habits);
         res.json(habits);
     } catch (error) {
         console.log(error);
