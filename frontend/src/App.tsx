@@ -15,7 +15,8 @@ function App() {
     email: "",
     role: "",
   })
-  const [token, setToken] = useState(window.localStorage.getItem("uset-auth-token"))
+  // const [token, setToken] = useState(window.localStorage.getItem("uset-auth-token"))
+  const [token, setToken] = useState("asdfsf")
   return (
     <Suspense fallback={<>Loading</>}>
       <ToastContainer />
