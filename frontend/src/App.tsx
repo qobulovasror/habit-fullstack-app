@@ -49,3 +49,39 @@ function App() {
 }
 
 export default App
+
+
+
+
+// export default interface IHabit {
+//   id: number;
+//   name: string;
+//   description: string;
+//   createdAt: string;
+//   frequency: number;
+//   amount: number;
+//   amountType: string;
+//   change: boolean;
+//   changeValue: number;
+//   target: number;
+//   reminder: boolean,
+//   reminderTime: string;
+// }
+
+
+
+// export default interface ITrack {
+//   id: number;
+//   time: string;
+//   quatity: number; 
+// }
+
+
+// export default interface IUser {
+//   id: number;
+//   name: string;
+//   email: string;
+//   password: string;
+//   createdAt: string;
+//   role: string;
+// }

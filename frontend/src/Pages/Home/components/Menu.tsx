@@ -1,13 +1,12 @@
-import React from 'react'
-
-export default function Menu() {
+export default function Menu(props) {
+    const {changeMenu, activeMenu} = props;
     return (
         <aside
             id="layout-menu"
             className="layout-menu menu-vertical menu bg-menu-theme"
         >
             <div className="app-brand demo">
-                <a href="index.html" className="app-brand-link">
+                <a href="/" className="app-brand-link">
                     <span className="app-brand-logo demo">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -40,38 +39,38 @@ export default function Menu() {
             <div className="menu-inner-shadow"></div>
             <ul className="menu-inner py-1">
                 {/* <!-- Dashboards --> */}
-                <li className="menu-item active">
-                    <a href="index.html" className="menu-link">
+                <li className={(activeMenu=="todayHabit")? "menu-item active": "menu-item "}>
+                    <a href="##" className="menu-link" onClick={()=>changeMenu("todayHabit")}>
                         <i className="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">Today's habits</div>
                     </a>
                 </li>
-                <li className="menu-item">
-                    <a href="index.html" className="menu-link">
+                <li className={(activeMenu=="allHabit")? "menu-item active": "menu-item "}>
+                    <a href="##" className="menu-link" onClick={()=>changeMenu("allHabit")}>
                         <i className="menu-icon tf-icons bx bx-list-ul"></i>
                         <div data-i18n="Analytics">All Habits</div>
                     </a>
                 </li>
-                <li className="menu-item">
-                    <a href="index.html" className="menu-link">
+                <li className={(activeMenu=="statistic")? "menu-item active": "menu-item "}>
+                    <a href="##" className="menu-link" onClick={()=>changeMenu("statistic")}>
                         <i className="menu-icon tf-icons bx bx-bar-chart-square"></i>
                         <div data-i18n="Analytics">Statistic</div>
                     </a>
                 </li>
                 {/* <!-- Layouts --> */}
-                <li className="menu-item">
+                <li className={"menu-item"}>
                     <a href="javascript:void(0);" className="menu-link menu-toggle">
                         <i className="menu-icon tf-icons bx bx-cog"></i>
                         <div data-i18n="Layouts">Setting</div>
                     </a>
 
                     <ul className="menu-sub">
-                        <li className="menu-item">
+                        <li className={(activeMenu=="todayHabit")? "menu-item active": "menu-item "}>
                             <a href="layouts-without-menu.html" className="menu-link">
                                 <div data-i18n="Without menu">Profile</div>
                             </a>
                         </li>
-                        <li className="menu-item">
+                        <li className={(activeMenu=="todayHabit")? "menu-item active": "menu-item "}>
                             <a href="layouts-without-navbar.html" className="menu-link">
                                 <div data-i18n="Without navbar">Logout</div>
                             </a>
